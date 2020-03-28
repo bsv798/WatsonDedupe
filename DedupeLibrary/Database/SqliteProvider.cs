@@ -20,6 +20,7 @@ namespace WatsonDedupe.Database
         private string _IndexFile;
         private string _ConnectionString;
         private SQLiteConnection _SqliteConnection;
+        private SQLiteTransaction _SQLiteTransaction;
         private bool _Debug;
 
         private readonly object _ConfigLock = new object();
@@ -884,6 +885,20 @@ namespace WatsonDedupe.Database
             }
 
             return ret;
+        }
+
+        public override bool StartTransaction()
+        {
+            _SQLiteTransaction = _SqliteConnection.BeginTransaction();
+
+            return true;
+        }
+
+        public override bool EndTransaction()
+        {
+            _SQLiteTransaction.Commit();
+
+            return true;
         }
 
         #endregion

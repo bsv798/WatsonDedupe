@@ -144,5 +144,9 @@ namespace WatsonDedupe.Database
         /// <param name="filename">The destination file.</param>
         /// <returns>True if successful.</returns>
         public abstract bool BackupDatabase(string filename);
+
+        public abstract bool StartTransaction();
+
+        public abstract bool EndTransaction();
     }
 }
