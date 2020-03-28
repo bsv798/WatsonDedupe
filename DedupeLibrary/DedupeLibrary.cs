@@ -831,7 +831,7 @@ namespace WatsonDedupe
 
             #region Single-Chunk
 
-            if (contentLength <= _MinChunkSize)
+            if ((contentLength <= _MinChunkSize) || (_ShiftCount == 0))
             {
                 byte[] chunkData = DedupeCommon.ReadBytesFromStream(stream, contentLength, out bytesRead);
                 key = DedupeCommon.BytesToBase64(DedupeCommon.Sha256(chunkData));
