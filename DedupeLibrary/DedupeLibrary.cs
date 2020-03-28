@@ -154,8 +154,6 @@ namespace WatsonDedupe
             if (minChunkSize % 64 != 0) throw new ArgumentException("Value for minChunkSize must be evenly divisible by 64.");
             if (maxChunkSize % 64 != 0) throw new ArgumentException("Value for maxChunkSize must be evenly divisible by 64.");
             if (minChunkSize < 1024) throw new ArgumentOutOfRangeException("Value for minChunkSize must be 256 or greater.");
-            if (maxChunkSize <= minChunkSize) throw new ArgumentOutOfRangeException("Value for maxChunkSize must be greater than minChunkSize and " + (8 * minChunkSize) + " or less.");
-            if (maxChunkSize < (8 * minChunkSize)) throw new ArgumentOutOfRangeException("Value for maxChunkSize must be " + (8 * minChunkSize) + " or greater.");
             if (shiftCount > minChunkSize) throw new ArgumentOutOfRangeException("Value for shiftCount must be less than or equal to minChunkSize.");
             if (writeChunkMethod == null) throw new ArgumentNullException(nameof(writeChunkMethod));
             if (readChunkMethod == null) throw new ArgumentNullException(nameof(readChunkMethod));
